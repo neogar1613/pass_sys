@@ -28,7 +28,7 @@ def generate_face_data() -> tuple:
             face_img = cv2.resize(gray[y:y+h, x:x+w], (200, 200))
             cv2.imwrite(os.path.join(PEOPLES_DIR, name, f'{count}.pgm'), face_img)
             count += 1
-        cv2.imshow('camera', frame)
+        cv2.imshow('generate_face_data', frame)
         if cv2.waitKey(int(1000/12)) & 0xff == ord("q") or count >= MAX_PEOPLE_PICTURES:
             break
     camera.release()

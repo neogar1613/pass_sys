@@ -5,6 +5,7 @@ from pathlib import Path
 
 from add_embeddings import add_embeddings_service
 from add_face_from_cam import generate_face_data
+from recognize_faces import reconize_faces_service
 from settings import SRC_DIR, PEOPLES_DIR
 
 
@@ -19,9 +20,10 @@ def add_new_people():
 
 
 def main():
-    create_dirs()
+    #create_dirs()
     #add_new_people()
     #add_embeddings_service()
+    reconize_faces_service()
 
 
 

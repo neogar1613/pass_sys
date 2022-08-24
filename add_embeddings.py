@@ -14,14 +14,14 @@ images_dir: str = PEOPLES_DIR
 embeddeds_file_path: str = os.path.join(SRC_DIR, "embeddeds")
 
 
-def check_dirs_exists() -> bool:
+def _check_dirs_exists() -> bool:
     """ Проверка наличия необходимых файлов и директорий """
     if not os.path.exists(images_dir):
         print('Не нашёл папку с изображениями.')
         return False
 
 
-def get_images_data(root_path: str) -> List[Dict]:
+def _get_images_data(root_path: str) -> List[Dict]:
     """ Считывает все папки внутри images_dir. Возвращает список словарей,
     каждый из которых содержит имя папки и список файлов в ней.
     images_data = [{"name": $dirname, "files": [$photo_1.jpg, ..., $photo_n.jpeg]}, ...]"""
@@ -35,7 +35,7 @@ def get_images_data(root_path: str) -> List[Dict]:
     return images_data
 
 
-def generate_embenddings(images_data: List[Dict]) -> Dict:
+def _generate_embenddings(images_data: List[Dict]) -> Dict:
     """ Читает изображения в массив, преобразует даные в нужный формат,
     находит лица на каждом изображении, вычисляет эмбеддинги.
     Возвращает словарь, содержащий имена и эмбеддинги для каждого имени.
@@ -74,13 +74,13 @@ def save_embeddings_data(embeddings_data: Dict):
 
 
 def add_embeddings_service():
-    dirs_exists: bool = check_dirs_exists()
+    dirs_exists: bool = _check_dirs_exists()
     if dirs_exists is False:
         exit()
     print('START')
     print('#'*40)
-    images_data: List[Dict] = get_images_data(root_path=images_dir)
-    embenddings_data: Dict = generate_embenddings(images_data=images_data)
+    images_data: List[Dict] = _get_images_data(root_path=images_dir)
+    embenddings_data: Dict = _generate_embenddings(images_data=images_data)
     save_embeddings_data(embeddings_data=embenddings_data)
     print('#'*40)
     print('END')
