@@ -1,6 +1,7 @@
 """ Точка входа.
     Для корректной установки face_recognition
     sudo apt-get install libboost-all-dev libgtk-3-dev build-essential cmake """
+import click
 from pathlib import Path
 
 from add_embeddings import add_embeddings_service
@@ -18,13 +19,25 @@ def add_new_people():
     pictures_count, name = generate_face_data()
     print(f'Собрано {pictures_count} изображений для {name}')
 
-
-def main():
-    #create_dirs()
-    #add_new_people()
-    #add_embeddings_service()
-    reconize_faces_service()
-
+@click.command()
+@click.argument("mode")
+def main(mode: str):
+    """
+    init - create dirs;\n
+    add - add new face from webcamera;\n
+    addembs - add or refresh embeddings;\n
+    find - reconize faces from webcamera stream; """
+    if mode == 'init':
+        create_dirs()
+    elif mode == 'add':
+        add_new_people()
+    elif mode == 'addembs':
+        add_embeddings_service()
+    elif mode == 'find':
+        reconize_faces_service()
+    else:
+        print('Invalid "mode" argument value!')
+        exit()
 
 
 if __name__ == '__main__':
