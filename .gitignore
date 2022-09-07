@@ -1,6 +1,7 @@
 ### My ###
 src/*
 !src/.gitkeep
+!src/classificator.xml
 
 
 ### Python ###

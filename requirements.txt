@@ -1,2 +1,5 @@
+click
+cmake
+boost
 face-recognition
 opencv-python
