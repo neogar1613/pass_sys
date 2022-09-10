@@ -1,7 +1,12 @@
 ### My ###
 src/*
+!src/qrcode/pass_qr.jpg
 !src/.gitkeep
 !src/classificator.xml
+venv
+vevn
+env
+.env
 
 
 ### Python ###

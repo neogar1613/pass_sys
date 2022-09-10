@@ -7,12 +7,14 @@ from pathlib import Path
 from add_embeddings import add_embeddings_service
 from add_face_from_cam import generate_face_data
 from recognize_faces import reconize_faces_service
-from settings import SRC_DIR, PEOPLES_DIR
+from services.qrcode_service import qrcode_gen
+from settings import SRC_DIR, PEOPLES_DIR, QRCODES_DIR
 
 
 def create_dirs():
     Path(SRC_DIR).mkdir(parents=True, exist_ok=True)
     Path(PEOPLES_DIR).mkdir(parents=True, exist_ok=True)
+    Path(QRCODES_DIR).mkdir(parents=True, exist_ok=True)
 
 
 def add_new_people():
@@ -35,6 +37,8 @@ def main(mode: str):
         add_embeddings_service()
     elif mode == 'find':
         reconize_faces_service()
+    elif mode == 'qr_gen':
+        qrcode_gen({'qq': 'ww'})
     else:
         print('Invalid "mode" argument value!')
         exit()

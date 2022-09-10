@@ -1,5 +1,6 @@
-click
-cmake
-boost
-face-recognition
-opencv-python
+click==8.1.3
+cmake==3.24.1.1
+boost==0.1
+face-recognition==1.3.0
+opencv-python==4.6.0.66
+qrcode==7.3.1
